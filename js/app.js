@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/pamo/Development/bike-parking-sf/config.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "mapbox": {
     "APIToken": "pk.eyJ1IjoicGFtbyIsImEiOiJmQmtBWTFBIn0.AH_zgICqcTW8An8Cl3wO8A",
     "mapId": "mapbox.run-bike-hike"
@@ -15,14 +15,34 @@ var mapbox = require('mapbox.js'),
     $ = require('jquery'),
     config = require('./config.json');
 
-L.mapbox.accessToken = config.mapbox.APIToken;
-var map = global.map = L.mapbox.map('map', config.mapbox.mapId)
-    .setView([37.78282,-122.40783], 13),
-    geocoder = L.mapbox.geocoder('mapbox.places-v1');
-
+    L.mapbox.accessToken = config.mapbox.APIToken;
+    var geoJson = [];
+    
 var plotData = function(data){
-    console.log(data);       
+    data.forEach(mapPointToFeature);
+    var map = global.map = L.mapbox.map('map', config.mapbox.mapId)
+    .setView([37.78282,-122.40783], 13) 
+    .featureLayer.setGeoJSON(geoJson);
 };
+
+function mapPointToFeature(element, index, array) {
+    var point = {
+            "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [new Number(element.latitude.latitude), new Number(element.latitude.longitude)]
+                },
+                "properties": {
+                    "title": element.addr_num,
+                    "description": element.yr_inst,
+                    "marker-color": "#fc4353",
+                    "marker-size": "large",
+                    "marker-symbol": "monument"
+                }
+    };
+    geoJson.push(point);
+    console.log(point);
+}
 
 $.ajax({
         url: config.data.url,
@@ -21540,7 +21560,7 @@ if (typeof module !== 'undefined') {
 }
 
 },{}],"/Users/pamo/Development/bike-parking-sf/node_modules/mapbox.js/package.json":[function(require,module,exports){
-module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "author": {
     "name": "Mapbox"
   },
