@@ -1,0 +1,9 @@
+{
+  "mapbox": {
+    "APIToken": "pk.eyJ1IjoicGFtbyIsImEiOiJmQmtBWTFBIn0.AH_zgICqcTW8An8Cl3wO8A",
+    "mapId": "mapbox.run-bike-hike"
+  },
+  "data": {
+    "url": "https://data.sfgov.org/resource/w969-5mn4.json"
+  }
+}
