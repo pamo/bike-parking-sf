@@ -1,0 +1,35 @@
+{
+  "name": "bike-parking-sf",
+  "version": "1.0.0",
+  "description": "A map of bike parking spots in San Francisco",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify index.js -o js/app.js",
+    "start": "npm run watch & serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pamo/bike-parking-sf.git"
+  },
+  "keywords": [
+    "bikes",
+    "san francisco",
+    "open data",
+    "city data",
+    "maps"
+  ],
+  "author": "Pamela Ocampo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pamo/bike-parking-sf/issues"
+  },
+  "homepage": "https://pamo.github.io/bike-parking-sf",
+  "dependencies": {
+    "browserify": "^9.0.3",
+    "jquery": "^2.1.3",
+    "mapbox.js": "^2.1.5",
+    "serve": "^1.4.0",
+    "watchify": "^2.4.0"
+  }
+}
